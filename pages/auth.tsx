@@ -8,6 +8,7 @@ export default function Auth() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  //convertin type of res to nextapi request type
   const uid = await loadIdToken(req as NextApiRequest);
 
   if (uid) {

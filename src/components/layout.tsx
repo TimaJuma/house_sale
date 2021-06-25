@@ -10,7 +10,7 @@ const Layout: React.FC<Iprops> = ({ main }) => {
   const { logout, authenticated } = useAuth();
 
   return (
-    <div className="bg-gray-900 max-w-screen-2xl mx-auto text-white">
+    <div className="bg-gray-900 max-w-screen-2-1/2xl mx-auto text-white">
       <nav className="bg-gray-800" style={{ height: "64px" }}>
         <div className="px-6 flex items-center justify-between h-16">
           <Link href="/">
@@ -27,7 +27,7 @@ const Layout: React.FC<Iprops> = ({ main }) => {
               <Link href="/houses/add">
                 <a>Add house</a>
               </Link>
-              <button onClick={() => {}}>LOGOUT</button>
+              <button onClick={logout}>LOGOUT</button>
             </>
           ) : (
             <Link href="/auth">
@@ -36,7 +36,7 @@ const Layout: React.FC<Iprops> = ({ main }) => {
           )}
         </div>
       </nav>
-      <main style={{ minHeight: "calc(100vh - 64px" }}>{main}</main>
+      <main style={{ minHeight: "calc(100vh - 64px)" }}>{main}</main>
     </div>
   );
 };

@@ -100,7 +100,7 @@ const HouseForm = ({}: IProps) => {
         variables: {
           input: {
             address: data.address,
-            image: imageData.secure_url ?? "",
+            image: imageData.secure_url,
             coordinates: {
               latitude: data.latitude,
               longitude: data.longitude,

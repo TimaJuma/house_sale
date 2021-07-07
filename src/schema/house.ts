@@ -15,7 +15,7 @@ import {
 import { Min, Max } from "class-validator";
 import { getBoundsOfDistance } from "geolib";
 // import { AuthorizedContext, Context } from "./context";
-import type { AuthorizedContext } from "./context";
+import type { AuthorizedContext, Context } from "./context";
 
 @InputType()
 class CoordinatesInput {
@@ -77,10 +77,15 @@ class House {
 
 @Resolver()
 export class HouseResolver {
+  //ARGS: GQL decorator  var name : TS type
+  @Query((_returns) => House, { nullable: true })
+  async house(@Arg("id") id: string, @Ctx() ctx: Context) {
+    return ctx.prisma.house.findOne({ where: { id: parseInt(id, 10) } });
+  }
+
   @Authorized()
   @Mutation((_returns) => House, { nullable: true })
   async createHouse(
-    //ARGS: GQL decorator - var name - TS type
     @Arg("input") input: HouseInput,
     @Ctx() ctx: AuthorizedContext
   ) {
